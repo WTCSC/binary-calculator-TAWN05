@@ -1,24 +1,57 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17650685)
+
 # Binary Calculator
 
-<!--
+this Binary Calculator is a Python utility that performs simple operations on binary numbers. This tool uses addition, subtraction, multiplication, and division, enabling binary calculations with variable handling of binary inputs and outputs.
+Features
 
-The following requirements must be met to receive full credit on this assignment. The calculator must handle binary arithmetic operations accurately while following proper error handling procedures and output formatting guidelines.
+    Binary Arithmetic: Performs calculations like addition, subtraction, multiplication, and division.
+    Error Handling: Finds and reports invalid binary inputs or division by zero.
+    Overflow Detection: Returns an "Overflow" message if results exceed the allowable range of an 8-bit binary number unless the variable binary handler is enabled.
+    Bit Length Adaptation: Automatically adjusts calculations to display the larger of the two input binary lengths.
 
-- Your solution must have a well-written and thorough README file.
-- The solution must be implemented as a function called `binary_calculator()` with three parameters:
-    - `bin1` - A string parameter representing the first binary number to be used in the calculation. Must contain only 0s and 1s.
-    - `bin2` - A string parameter representing the second binary number to be used in the calculation. Must contain only 0s and 1s.
-    - `operator` - A string containing one of the following arithmetic operators: `'+'`, `'-'`, `'*'`, or `'/'`
-- Do not use Python's built-in `bin()` function.
-- Implement your own binary-to-decimal and decimal-to-binary conversion logic.
-- All binary inputs and outputs should be strings.
-- Handle division by zero by returning `"NaN"`
-- Handle decimal numbers by rounding down to the nearest whole number (flooring).
-- Return `"Error"` for invalid binary inputs (containing characters other than `0` and `1`)
-- Return `"Overflow"` for any operations that overflow (i.e. negative numbers, numbers greater than 8-bits).
-- Outputs must be returned as 8-bit numbers (padded with leading zeros if necessary). For example, the decimal number `5` should be returned as `"00000101"` .
+## Usage and Function Overview
 
-Your solution will be tested against various test cases including edge cases, invalid inputs, and all four arithmetic operations.
+binary_calculator(bin1, bin2, operator)
 
- -->
+    Parameters:
+        bin1 (str): First binary number as a string.
+        bin2 (str): Second binary number as a string.
+        operator (str): Operation to perform ("+", "-", "*", or "/").
+
+    Returns:
+        Binary result of the operation or an error message ("Error", "Overflow", or "NaN" for invalid operations).
+
+Example Usage
+
+## Addition
+result = binary_calculator("00000100", "00000001", "+")
+print(result)  # Output: 00000101
+
+## Subtraction
+result = binary_calculator("00001000", "00000100", "-")
+print(result)  # Output: 00000100
+
+## Multiplication
+result = binary_calculator("00000110", "00000010", "*")
+print(result)  # Output: 00001100
+
+## Division
+result = binary_calculator("00001000", "00000010", "/")
+print(result)  # Output: 00000100
+
+## Implementation Details
+### Binary to Decimal Conversion
+
+The calculator converts binary inputs into decimal numbers by iterating through each bit and summing the values based on their position.
+Arithmetic Operations
+
+After conversion, the arithmetic operation is performed on the decimal numbers.
+Decimal to Binary Conversion
+
+Once the operation is complete, the result is converted back into binary by iterating through descending powers of 2.
+Error and Overflow Handling
+
+    Invalid Input: Returns "Error" if a non-binary input is provided.
+    Division by Zero: Returns "NaN" for division operations involving zero as the second operand.
+    Overflow: If the result exceeds 8 bits (greater than 255 or less than 0), the function returns "Overflow".
